@@ -1,5 +1,5 @@
 # Hi to whoever might be reading this! I made this in the span of a few hours to practice my skills.
-# I like the concept of this game and I hope to turn it into a real game someday.
+# I like the concept of this game and I hope to turn it into a real game someday.gi
 
 import random
 import time
