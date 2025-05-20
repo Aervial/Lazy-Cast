@@ -100,26 +100,33 @@ def fish(luck):
     time.sleep(1)
 
     # See if the player catches anything
-    if random.random() > 0.25:
+    if random.random() > 0.40:
         print(Fore.RED + "You didn't catch a fish.")
         return 0
 
     fish = [
-        {"name": "Salmon", "chance": 20, "value": 50},
-        {"name": "Tuna", "chance": 10, "value": 100},
-        {"name": "Trout", "chance": 5, "value": 250},
-        {"name": "Bass", "chance": 1, "value": 500},
-        {"name": "Shark", "chance": 0.5, "value": 1000},
+        {"name": "Minnow", "chance": 30, "value": 10},
         {"name": "Carp", "chance": 25, "value": 30},
+        {"name": "Anchovy", "chance": 28, "value": 15},
+        {"name": "Sardine", "chance": 27, "value": 18},
+        {"name": "Bluegill", "chance": 22, "value": 25},
+        {"name": "Salmon", "chance": 20, "value": 50},
+        {"name": "Perch", "chance": 20, "value": 35},
+        {"name": "Herring", "chance": 18, "value": 40},
+        {"name": "Mullet", "chance": 16, "value": 45},
         {"name": "Catfish", "chance": 15, "value": 70},
+        {"name": "Tuna", "chance": 10, "value": 100},
         {"name": "Pike", "chance": 8, "value": 120},
-        {"name": "Swordfish", "chance": 3, "value": 300},
-        {"name": "Barracuda", "chance": 1.5, "value": 450},
-        {"name": "Electric Eel", "chance": 0.8, "value": 800},
         {"name": "Mahi-Mahi", "chance": 6, "value": 200},
+        {"name": "Trout", "chance": 5, "value": 250},
+        {"name": "Swordfish", "chance": 3, "value": 300},
         {"name": "Sturgeon", "chance": 2, "value": 400},
-        {"name": "Coelacanth", "chance": 0.1, "value": 5000},
-        {"name": "Golden Koi", "chance": 0.25, "value": 2000}
+        {"name": "Barracuda", "chance": 1.5, "value": 450},
+        {"name": "Bass", "chance": 1, "value": 500},
+        {"name": "Electric Eel", "chance": 0.8, "value": 800},
+        {"name": "Shark", "chance": 0.5, "value": 1000},
+        {"name": "Golden Koi", "chance": 0.25, "value": 2000},
+        {"name": "Coelacanth", "chance": 0.1, "value": 5000}
     ]
 
 
