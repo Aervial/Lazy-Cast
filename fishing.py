@@ -7,9 +7,9 @@ from colorama import Fore, Style, init
 
 init(autoreset=True)
 
-print(Fore.BLACK + "-" * 50)
-print(Fore.MAGENTA +"Welcome to Lazy Cast!")
-print(Fore.BLACK + "-" * 50)
+print("-" * 50)
+print(Fore.MAGENTA + "Welcome to Lazy Cast!".center(50))
+print("-" * 50)
 print("")
 
 def main():
@@ -17,9 +17,9 @@ def main():
     while True:
         # prompt the user where to fish
         print(Fore.GREEN + "Where would you like to fish?")
-        print(Fore.BLUE + "1. River")
-        print(Fore.BLUE + "2. Lake")
-        print(Fore.BLUE + "3. Sea")
+        print(Fore.CYAN + "1. River")
+        print(Fore.CYAN + "2. Lake")
+        print(Fore.CYAN + "3. Sea")
         print("")
 
         locations = [
@@ -33,7 +33,7 @@ def main():
             try:
                 choice = int(input(""))
                 if 1 <= choice <= 3:
-                    print(f"\n{Fore.BLUE}You chose to fish in the {locations[choice - 1]["name"]}!")
+                    print(f"\n{Fore.CYAN}You chose to fish in the {locations[choice - 1]["name"]}!")
                     print("")
                     break
             except ValueError:
@@ -54,9 +54,9 @@ def main():
 
         if gain > 0:
             bal += gain
-            print(f"\n{Fore.BLUE}Your balance is now: {Fore.GREEN}${bal:.2f}")
+            print(f"\n{Fore.CYAN}Your balance is now: {Fore.GREEN}${bal:.2f}")
         else:
-            print(f"\n{Fore.BLUE}Balance: {Fore.GREEN}${bal:.2f}")
+            print(f"\n{Fore.CYAN}Balance: {Fore.GREEN}${bal:.2f}")
 
         play_again = input(Fore.GREEN + "\nDo you want to play again? (yes/no): ").lower()
         if play_again != "yes":
@@ -89,6 +89,14 @@ def fish(luck):
         print(Fore.CYAN + ".", end="", flush=True)
     print("", flush=True)
 
+    for i in range(random.randint(2, 5)):
+        time.sleep(1)
+        print(Fore.CYAN + "blub", end="", flush=True)
+        for i in range(random.randint(2, 5)):
+            time.sleep(0.5)
+            print(Fore.CYAN + ".", end="", flush=True)
+    print("", flush=True)
+
     time.sleep(1)
 
     # See if the player catches anything
@@ -96,13 +104,24 @@ def fish(luck):
         print(Fore.RED + "You didn't catch a fish.")
         return 0
 
-    fish = [
+fish = [
     {"name": "Salmon", "chance": 20, "value": 50},
     {"name": "Tuna", "chance": 10, "value": 100},
     {"name": "Trout", "chance": 5, "value": 250},
     {"name": "Bass", "chance": 1, "value": 500},
-    {"name": "Shark", "chance": 0.5, "value": 1000}
-    ]
+    {"name": "Shark", "chance": 0.5, "value": 1000},
+    {"name": "Carp", "chance": 25, "value": 30},
+    {"name": "Catfish", "chance": 15, "value": 70},
+    {"name": "Pike", "chance": 8, "value": 120},
+    {"name": "Swordfish", "chance": 3, "value": 300},
+    {"name": "Barracuda", "chance": 1.5, "value": 450},
+    {"name": "Electric Eel", "chance": 0.8, "value": 800},
+    {"name": "Mahi-Mahi", "chance": 6, "value": 200},
+    {"name": "Sturgeon", "chance": 2, "value": 400},
+    {"name": "Coelacanth", "chance": 0.1, "value": 5000},
+    {"name": "Golden Koi", "chance": 0.25, "value": 2000}
+]
+
 
 
     # multiply the chance to catch a fish by the current luck
@@ -119,7 +138,7 @@ def fish(luck):
     for f in mf:
         current += f["chance"]
         if roll <= current:
-            print(f"\n{Fore.BLUE}You caught a {Fore.YELLOW}{f['name']}!{Fore.BLUE} Value: {Fore.GREEN}${f['value']}")
+            print(f"\n{Fore.CYAN}You caught a {Fore.YELLOW}{f['name']}!{Fore.CYAN} Value: {Fore.GREEN}${f['value']}")
             value += int(f["value"])
             return int(f["value"])
 
