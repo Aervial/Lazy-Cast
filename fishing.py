@@ -7,13 +7,20 @@ from colorama import Fore, Style, init
 
 init(autoreset=True)
 
+print(Fore.BLACK + "-" * 50)
+print(Fore.MAGENTA +"Welcome to Lazy Cast!")
+print(Fore.BLACK + "-" * 50)
+print("")
+
 def main():
+    bal = 0
     while True:
         # prompt the user where to fish
         print(Fore.GREEN + "Where would you like to fish?")
         print(Fore.BLUE + "1. River")
         print(Fore.BLUE + "2. Lake")
         print(Fore.BLUE + "3. Sea")
+        print("")
 
         locations = [
             {"name": "river", "boost": f"{round(random.uniform(1, 3) * 2) / 2}", "num": 1},
@@ -26,6 +33,8 @@ def main():
             try:
                 choice = int(input(""))
                 if 1 <= choice <= 3:
+                    print(f"\n{Fore.BLUE}You chose to fish in the {locations[choice - 1]["name"]}!")
+                    print("")
                     break
             except ValueError:
                 print(Fore.RED + "Please enter a number between 1 and 3.")
@@ -41,11 +50,18 @@ def main():
         luck = gen_luck(boost)
 
         # Got luck now, begin fishing
-        fish(luck)
+        gain = int(fish(luck))
+
+        if gain > 0:
+            bal += gain
+            print(f"\n{Fore.BLUE}Your balance is now: {Fore.GREEN}${bal:.2f}")
+        else:
+            print(f"\n{Fore.BLUE}Balance: {Fore.GREEN}${bal:.2f}")
 
         play_again = input(Fore.GREEN + "\nDo you want to play again? (yes/no): ").lower()
         if play_again != "yes":
             print("Thanks for playing!")
+            time.sleep(1.5)
             break  # Exit the loop and end the game
 
 
@@ -55,33 +71,37 @@ def gen_luck(b):
 
 def fish(luck):
 
-    print("You draw back your rod, feeling the line tense as you prepare to cast", end="", flush=True)
+    time.sleep(1)
+
+    value = 0
+
+    print(Fore.CYAN +"You draw back your rod, feeling the line tense as you prepare to cast", end="", flush=True)
 
     for i in range(random.randint(2, 5)):
         time.sleep(1)
-        print(".", end="", flush=True)
-    print("")
+        print(Fore.CYAN + ".", end="", flush=True)
+    print("", flush=True)
 
-    print("You cast your rod, feeling the line release as it flies into the water", end="", flush=True)
+    print(Fore.CYAN + "You cast your rod, feeling the line release as it flies into the water", end="", flush=True)
 
     for i in range(random.randint(2, 5)):
         time.sleep(1)
-        print(".", end="", flush=True)
-    print("")
+        print(Fore.CYAN + ".", end="", flush=True)
+    print("", flush=True)
 
     time.sleep(1)
 
     # See if the player catches anything
     if random.random() > 0.25:
         print(Fore.RED + "You didn't catch a fish.")
-        return
+        return 0
 
     fish = [
-    {"name": "Salmon", "chance": 20},
-    {"name": "Tuna", "chance": 10},
-    {"name": "Trout", "chance": 5},
-    {"name": "Bass", "chance": 1},
-    {"name": "Shark", "chance": 0.5}
+    {"name": "Salmon", "chance": 20, "value": 50},
+    {"name": "Tuna", "chance": 10, "value": 100},
+    {"name": "Trout", "chance": 5, "value": 250},
+    {"name": "Bass", "chance": 1, "value": 500},
+    {"name": "Shark", "chance": 0.5, "value": 1000}
     ]
 
 
@@ -89,7 +109,7 @@ def fish(luck):
     mf = []
     for f in fish:
         mc = f["chance"] * luck
-        mf.append({"name": f["name"], "chance": mc})
+        mf.append({"name": f["name"], "chance": mc, "value": f["value"]})
     
     # now that we have the modified luck, roll for a fish
     total_chance = sum(f["chance"] for f in mf)
@@ -99,7 +119,8 @@ def fish(luck):
     for f in mf:
         current += f["chance"]
         if roll <= current:
-            print(f"You caught a {f['name']}!")
-            break
+            print(f"\n{Fore.BLUE}You caught a {Fore.YELLOW}{f['name']}!{Fore.BLUE} Value: {Fore.GREEN}${f['value']}")
+            value += int(f["value"])
+            return int(f["value"])
 
 main()
