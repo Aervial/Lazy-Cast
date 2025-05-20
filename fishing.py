@@ -6,7 +6,7 @@ import time
 from colorama import Fore, Style, init
 
 init(autoreset=True)
-a
+
 def main():
     while True:
         # prompt the user where to fish
