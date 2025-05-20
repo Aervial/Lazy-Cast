@@ -129,8 +129,6 @@ def fish(luck):
         {"name": "Coelacanth", "chance": 0.1, "value": 5000}
     ]
 
-
-
     # multiply the chance to catch a fish by the current luck
     mf = []
     for f in fish:
