@@ -104,23 +104,23 @@ def fish(luck):
         print(Fore.RED + "You didn't catch a fish.")
         return 0
 
-fish = [
-    {"name": "Salmon", "chance": 20, "value": 50},
-    {"name": "Tuna", "chance": 10, "value": 100},
-    {"name": "Trout", "chance": 5, "value": 250},
-    {"name": "Bass", "chance": 1, "value": 500},
-    {"name": "Shark", "chance": 0.5, "value": 1000},
-    {"name": "Carp", "chance": 25, "value": 30},
-    {"name": "Catfish", "chance": 15, "value": 70},
-    {"name": "Pike", "chance": 8, "value": 120},
-    {"name": "Swordfish", "chance": 3, "value": 300},
-    {"name": "Barracuda", "chance": 1.5, "value": 450},
-    {"name": "Electric Eel", "chance": 0.8, "value": 800},
-    {"name": "Mahi-Mahi", "chance": 6, "value": 200},
-    {"name": "Sturgeon", "chance": 2, "value": 400},
-    {"name": "Coelacanth", "chance": 0.1, "value": 5000},
-    {"name": "Golden Koi", "chance": 0.25, "value": 2000}
-]
+    fish = [
+        {"name": "Salmon", "chance": 20, "value": 50},
+        {"name": "Tuna", "chance": 10, "value": 100},
+        {"name": "Trout", "chance": 5, "value": 250},
+        {"name": "Bass", "chance": 1, "value": 500},
+        {"name": "Shark", "chance": 0.5, "value": 1000},
+        {"name": "Carp", "chance": 25, "value": 30},
+        {"name": "Catfish", "chance": 15, "value": 70},
+        {"name": "Pike", "chance": 8, "value": 120},
+        {"name": "Swordfish", "chance": 3, "value": 300},
+        {"name": "Barracuda", "chance": 1.5, "value": 450},
+        {"name": "Electric Eel", "chance": 0.8, "value": 800},
+        {"name": "Mahi-Mahi", "chance": 6, "value": 200},
+        {"name": "Sturgeon", "chance": 2, "value": 400},
+        {"name": "Coelacanth", "chance": 0.1, "value": 5000},
+        {"name": "Golden Koi", "chance": 0.25, "value": 2000}
+    ]
 
 
 
