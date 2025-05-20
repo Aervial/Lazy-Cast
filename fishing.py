@@ -4,6 +4,7 @@
 import random
 import time
 from colorama import Fore, Style, init
+import os
 
 init(autoreset=True)
 
@@ -143,6 +144,12 @@ def fish(luck):
     for f in mf:
         current += f["chance"]
         if roll <= current:
+            print("Something bites your line!")
+            print("Reel", end="", flush=True)
+            for i in range(random.randint(2, 5)):
+                time.sleep(1)
+                print(".", end="", flush=True)
+            print("", flush=True)
             print(f"\n{Fore.CYAN}You caught a {Fore.YELLOW}{f['name']}!{Fore.CYAN} Value: {Fore.GREEN}${f['value']}")
             value += int(f["value"])
             return int(f["value"])
